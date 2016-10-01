@@ -1,12 +1,20 @@
-import { List } from 'immutable';
+import { fromJS, Map } from 'immutable';
 import constants from '../constants/appConstants';
 
-export default (state = new List([]), action) => {
+const defaultTree = {
+  posts: [],
+  comments: [],
+};
+
+export default (state = new Map(fromJS(defaultTree)), action) => {
   switch (action.type) {
-    case constants.ADD_ITEM:
-      return state.unshift(action.todo);
-    case constants.REMOVE_ITEM:
-      return state.filter((todo, index) => index !== action.index);
+    case constants.SET_POSTS:
+      return state.set('posts', fromJS(action.data));
+    case constants.REMOVE_POST:
+      return state.set('posts', state.get('posts').delete(action.id));
+    case constants.SET_POST:
+      return state.set('posts', state.get('posts').push(fromJS(action.data)));
+
     default:
       return state;
   }
