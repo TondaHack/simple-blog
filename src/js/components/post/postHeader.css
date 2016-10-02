@@ -1,0 +1,19 @@
+:root{
+    --remove-color: rgb(222, 79, 79);
+}
+
+.post-header .meta-data{
+    display: flex;
+}
+
+.post-header .remove-post {
+    color: var(--remove-color);
+    cursor: pointer;
+    margin-left: 1em;
+}
+.post-header .comment-icon {
+    margin-left: 1em;
+    color: gray;
+    cursor: pointer;
+}
+

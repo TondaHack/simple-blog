@@ -1,0 +1,27 @@
+:root{
+    --post-heading-size: 1.5rem;
+    --post-heading-color: #263238;
+    --post-heading-color-hover: gray(50%);
+    --remove-color: rgb(222, 79, 79);
+}
+
+.post-list-item{
+}
+
+.post-list-item h1 {
+    font-size: var(--post-heading-size);
+    margin-bottom: 0;
+}
+
+.post-list-item h1 a {
+    color: var(--post-heading-color);
+    text-decoration: none;
+}
+.post-list-item h1 a:hover{
+    text-decoration: none;
+    color: var(--post-heading-color-hover)
+}
+
+.post-list-item .post-content{
+    margin-top: 2em;
+}

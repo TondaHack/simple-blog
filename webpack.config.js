@@ -91,7 +91,8 @@ module.exports = {
           customMedia: true,
           colorHexAlpha: true,
           colorRgba: true,
-          mediaQueriesRange: true
+          mediaQueriesRange: true,
+          colorGray: true,
         }
       })
     ];

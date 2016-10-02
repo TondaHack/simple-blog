@@ -1,0 +1,11 @@
+.search-input {
+    width: 100%;
+}
+
+.user-filter{
+    display: flex;
+}
+
+.user-filter i{
+    cursor: pointer;
+}
