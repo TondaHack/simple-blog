@@ -23,7 +23,12 @@ class PostDetail extends React.Component {
         <div>
           {post.get('title')}
         </div>
-        {post.get('body')}
+        <div>
+          {post.get('body')}
+        </div>
+        <div>
+          {post.get('userId')}
+        </div>
       </Grid>
     );
   }

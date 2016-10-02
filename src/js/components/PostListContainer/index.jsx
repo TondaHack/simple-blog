@@ -2,10 +2,16 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { Grid } from 'react-mdl';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import { getDefaultData, removePostByIndex } from '../../actions/index';
+import { getAllPosts, removePostByIndex } from '../../actions/index';
 import ListItem from './ListItem';
 
 class ListContainer extends React.Component {
+  static propTypes = {
+    posts: ImmutablePropTypes.list,
+    getPostsList: React.PropTypes.func.isRequired,
+    removePost: React.PropTypes.func.isRequired,
+  };
+
   componentWillMount() {
     const { getPostsList, posts } = this.props;
 
@@ -33,18 +39,11 @@ class ListContainer extends React.Component {
   }
 }
 
-
-ListContainer.propTypes = {
-  posts: ImmutablePropTypes.list,
-  getPostsList: React.PropTypes.func.isRequired,
-  removePost: React.PropTypes.func.isRequired,
-};
-
 const stateTodo = data => ({
   posts: data.get('posts'),
 });
 const dispatchPosts = dispatch => ({
-  getPostsList: () => getDefaultData(dispatch),
+  getPostsList: () => getAllPosts(dispatch),
   removePost: id => removePostByIndex(dispatch, id),
 });
 
