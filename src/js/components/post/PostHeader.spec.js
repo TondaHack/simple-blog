@@ -36,7 +36,7 @@ describe('Post Header', () => {
     const getUserListener = sinon.spy(methods, 'getUserPosts');
     const routerListener = sinon.spy(methods.router, 'push');
     const component = TestUtils.renderIntoDocument(<PostHeader remove={methods.remove} router={methods.router} user={new Map()} getUserPosts={methods.getUserPosts} post={new Map()} commentsCount={2} />);
-    const element = ReactDOM.findDOMNode(component).querySelector('.remove-post');
+    const element = ReactDOM.findDOMNode(component).querySelector('.remove-post-icon');
     const userButton = ReactDOM.findDOMNode(component).querySelector('.username');
 
     TestUtils.Simulate.click(element);

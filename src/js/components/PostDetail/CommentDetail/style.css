@@ -3,6 +3,7 @@
     margin-bottom: 1em;
     margin-left: auto;
     margin-right: auto;
+    border-bottom: 1px solid gray;
 }
 
 .comment-detail header {

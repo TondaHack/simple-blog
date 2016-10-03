@@ -12,8 +12,8 @@ import './index.css';
 
 const App = props => (
   <div>
-    <Header>
-      <h1> Amazing blog </h1>
+    <Header className="blog-header">
+      <h1> Amazing posts </h1>
     </Header>
     <div className="main">
       {props.children}

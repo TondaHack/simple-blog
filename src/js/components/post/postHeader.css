@@ -12,10 +12,13 @@
 .post-header .remove-post {
     color: var(--remove-color);
     cursor: pointer;
-    margin-left: 1em;
+    float: right;
+}
+.post-header .comment-tooltip{
+    float: right;
+    margin-right: 0.7em;
 }
 .post-header .comment-icon {
-    margin-left: 1em;
     color: gray;
     cursor: pointer;
 }

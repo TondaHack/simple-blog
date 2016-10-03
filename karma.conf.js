@@ -27,7 +27,7 @@ module.exports = function (config) {
       ]
     },
     webpack: {
-      devtool: 'inline-source-map', //just do inline source maps instead of the default
+      devtool: 'inline-source-map',
       module: {
         preLoaders: [
           {

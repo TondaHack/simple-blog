@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import { withRouter } from 'react-router';
-import { Grid, Cell } from 'react-mdl';
+import { withRouter, Link } from 'react-router';
+import { Grid, Cell, Icon } from 'react-mdl';
 import { Map, List } from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PostHeader from '../post/PostHeader';
@@ -50,14 +50,18 @@ class PostDetail extends React.Component {
 
     return (
       <Grid className="post-detail">
-        <PostHeader
-          post={post}
-          user={user}
-          commentsCount={comments.size}
-          getUserPosts={getUserPosts}
-          remove={this.removePost}
-        />
-
+        <Link to="/" className="back-link" title="Back to the list!">
+          <Icon name="arrow_back" />
+        </Link>
+        <Cell col={12}>
+          <PostHeader
+            post={post}
+            user={user}
+            commentsCount={comments.size}
+            getUserPosts={getUserPosts}
+            remove={this.removePost}
+          />
+        </Cell>
         <Cell col={12}>
           {post.get('body')}
         </Cell>
