@@ -1,5 +1,5 @@
 {
-  "name": "react-stack",
+  "name": "simple-blog",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TondaHack/react-stack.git"
+    "url": "git+https://github.com/TondaHack/simple-blog.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TondaHack/react-stack/issues"
+    "url": "https://github.com/TondaHack/simple-blog/issues"
   },
-  "homepage": "https://github.com/TondaHack/react-stack#readme",
+  "homepage": "https://github.com/TondaHack/simple-blog#readme",
   "devDependencies": {
     "babel-core": "^6.8.0",
     "babel-eslint": "^7.0.0",
