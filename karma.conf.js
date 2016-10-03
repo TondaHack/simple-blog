@@ -43,14 +43,27 @@ module.exports = function (config) {
             test: /\.jsx?$/
           },
           {
-            test: /\.scss$/,
-            loaders: [ 'style', 'css', 'postcss', 'sass' ]
-          }
+            test: /\.css$/,
+            loader: "style-loader!css-loader!postcss-loader",
+          },
         ]
       },
-      postcss: [ autoprefixer({
-        browsers: [ 'last 2 versions' ]
-      }) ]
+      postcss: function (webpack) {
+        return [
+          require("postcss-import")({ addDependencyTo: webpack }),
+          require("postcss-url")(),
+          require("postcss-cssnext")({
+            features: {
+              nesting: true,
+              customMedia: true,
+              colorHexAlpha: true,
+              colorRgba: true,
+              mediaQueriesRange: true,
+              colorGray: true,
+            }
+          })
+        ];
+      }
     },
     webpackServer: {
       noInfo: true
