@@ -3,7 +3,6 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Cell } from 'react-mdl';
 import './style.css';
 
-
 const CommentDetail = (props) => {
   const { comment } = props;
 

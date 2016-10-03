@@ -74,7 +74,9 @@ export default class ListContainer extends React.Component {
             </span>
           </Cell>
         }
-        {postsList}
+        <Cell col={12}>
+          {postsList}
+        </Cell>
       </Grid>
     );
   }

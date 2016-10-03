@@ -24,14 +24,13 @@ const replaceNewLines = (str = '') => str.replace(/(\r\n|\n|\r)/gm, ' ');
 
 export const searchByFilters = (posts, filters) => {
   const userId = filters.get('userId');
+  const search = filters.get('search');
+  const regex = new RegExp(search.trim(), 'i');
   let filteredPosts = posts;
 
   if (userId) {
     filteredPosts = posts.filter(item => item.get('userId') === parseInt(userId, 10));
   }
-
-  const search = filters.get('search');
-  const regex = new RegExp(search.trim(), 'i');
 
   return filteredPosts.filter(item => (replaceNewLines(item.get('body')).search(regex) > -1 || replaceNewLines(item.get('title')).search(regex) > -1));
 };
