@@ -36,33 +36,28 @@ module.exports = {
   },
   module: {
     preLoaders: [
-      //   {
-      //     test: /\.jsx?$/,
-      //     exclude: /node_modules/,
-      //     loader: 'jscs-loader'
-      // },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'eslint-loader'
       }, ],
-    loaders: [ {
+    loaders: [{
       test: /\.jsx?$/,
       loaders: [ 'babel' ],
       include: path.join(__dirname, 'src/js')
-    },
+      },
       {
         test: /\.css$/,
         loader: "style-loader!css-loader!postcss-loader",
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       },
       // {
       //     test: /\.(png|jpg|gif)$/,
       //     loader: 'file-loader?name=img/img-[hash:6].[ext]'
       // },
-      {
-          test: /\.json$/,
-          loader: 'json-loader'
-      },
       // {
       //     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=image/svg+xml'
       // },

@@ -44,6 +44,5 @@ describe('Post Header', () => {
     TestUtils.Simulate.click(userButton);
     expect(getUserListener.called).toEqual(true);
     expect(routerListener.called).toEqual(true);
-
   });
 });

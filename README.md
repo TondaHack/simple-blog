@@ -1,12 +1,14 @@
 # React Stack Example [![Build Status](https://travis-ci.org/TondaHack/simple-blog.svg?branch=master)](https://travis-ci.org/TondaHack/simple-blog)
 
-Example of stack for React.js written in ES6. Bundled by Webpack for develop with HotReload.
+Example of simple blog. React.js application written in ES6. Bundled by Webpack for develop with HotReload.
 
 Tests are configured by Karma, Mocha, Sinon, Expect. Coverage is visualized by iSparta modul. 
 
 Travis build to gh-page. [Live example](http://tondahack.github.io/simple-blog/)
 
 Tests coverage online. [Tests coverage](http://tondahack.github.io/simple-blog/coverage/)
+
+Airbnb coding standard ruled by [ESLint](http://eslint.org/)
 
 ##Prerequisites
 - Node.js
@@ -41,7 +43,7 @@ Tests coverage online. [Tests coverage](http://tondahack.github.io/simple-blog/c
 ###Develop Tests
  `npm run test:dev`
  
-###Run With docker
+###Run docker
  This project is dockerized with [Alpine image](https://hub.docker.com/_/alpine/) and thanks to docker volumes is Hot reload working. 
  In this approach you don't need node installed.
 

@@ -40,18 +40,18 @@ module.exports = {
     extensions: [ '', '.js', '.jsx' ]
   },
   module: {
-    loaders: [ {
-      test: /\.jsx?$/,
-      loaders: [ 'babel' ],
-      include: path.join(__dirname, 'src')
-    },
+    loaders: [{
+        test: /\.jsx?$/,
+        loaders: [ 'babel' ],
+        include: path.join(__dirname, 'src')
+      },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("css!postcss-loader?sourceMap"),
       },
       {
-          test: /\.json$/,
-          loader: 'json-loader'
+        test: /\.json$/,
+        loader: 'json-loader'
       },
       // {
       //     test: /\.(png|jpg|gif)$/,
