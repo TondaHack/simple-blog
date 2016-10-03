@@ -5,7 +5,7 @@ const appConstants = {
   SET_POST_DATA: 'SET_POST_DATA',
   SET_POSTS_DATA: 'SET_POSTS_DATA',
   SEARCH: 'SEARCH',
-  USER_POSTS: 'USER_POSTS',
+  USER_SEARCH: 'USER_SEARCH',
 };
 
 export default appConstants;

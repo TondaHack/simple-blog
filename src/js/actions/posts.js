@@ -56,7 +56,7 @@ export const getSinglePost = (dispatch, postId) => {
     .catch(window.console.error);
 };
 
-export const removePostByIndex = (dispatch, id) => {
+export const removePostById = (dispatch, id) => {
   dispatch({
     type: constants.REMOVE_POST,
     id,
@@ -72,7 +72,7 @@ export const searchPosts = (dispatch, search) => {
 
 export const getUserPosts = (dispatch, userId) => {
   dispatch({
-    type: constants.USER_POSTS,
+    type: constants.USER_SEARCH,
     userId,
   });
 };

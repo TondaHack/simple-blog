@@ -6,7 +6,7 @@ import './style.css';
 
 export default class ListContainer extends React.Component {
   static propTypes = {
-    posts: ImmutablePropTypes.list,
+    posts: ImmutablePropTypes.map.isRequired,
     getPostsList: React.PropTypes.func.isRequired,
     removePost: React.PropTypes.func.isRequired,
     search: React.PropTypes.func.isRequired,
@@ -44,7 +44,7 @@ export default class ListContainer extends React.Component {
 
   render() {
     const { posts, filters, clearUserFilter } = this.props;
-    const postsList = posts.map(this.renderListItem);
+    const postsList = posts.valueSeq().map(this.renderListItem);
 
     return (
       <Grid>
@@ -59,12 +59,19 @@ export default class ListContainer extends React.Component {
           />
         </Cell>
         {filters.get('userId') &&
-          <Cell col={12} className="user-filter">
-            <span>{filters.getIn(['user', 'name'])}</span>
-            <Icon
-              name="clear"
-              onClick={clearUserFilter}
-            />
+          <Cell col={12}>
+            <span className="user-filter">
+              <span className="username">
+                {filters.getIn(['user', 'name'])}
+              </span>
+              <span>
+                <Icon
+                  name="clear"
+                  onClick={clearUserFilter}
+                  className="clear-user-filter"
+                />
+              </span>
+            </span>
           </Cell>
         }
         {postsList}

@@ -3,6 +3,7 @@ import 'react-mdl/extra/material';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { Header } from 'react-mdl';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import PostListContainer from './components/reduxContainers/postListContainer';
 import PostDetail from './components/reduxContainers/postDetailContainer';
@@ -10,10 +11,14 @@ import store from './stores';
 import './index.css';
 
 const App = props => (
-  <main className="main">
-    <h3> My Blog </h3>
-    {props.children}
-  </main>
+  <div>
+    <Header>
+      <h1> Amazing blog </h1>
+    </Header>
+    <div className="main">
+      {props.children}
+    </div>
+  </div>
 );
 
 App.propTypes = {

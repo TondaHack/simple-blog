@@ -1,10 +1,32 @@
 import React, { PropTypes } from 'react';
-import { Grid } from 'react-mdl';
+import { withRouter } from 'react-router';
+import { Grid, Cell } from 'react-mdl';
 import { Map, List } from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PostHeader from '../post/PostHeader';
+import CommentDetail from './CommentDetail/index';
+import './style.css';
 
-export default class PostDetail extends React.Component {
+class PostDetail extends React.Component {
+  static propTypes = {
+    post: ImmutablePropTypes.map.isRequired,
+    user: ImmutablePropTypes.map.isRequired,
+    comments: ImmutablePropTypes.map.isRequired,
+    getPost: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
+    getUserPosts: PropTypes.func.isRequired,
+    removePost: PropTypes.func.isRequired,
+    router: React.PropTypes.shape({
+      push: React.PropTypes.func,
+    }),
+  };
+
+  static defaultProps = {
+    post: new Map(),
+    comments: new List(),
+    user: new Map(),
+  };
+
   componentWillMount() {
     const { getPost, id, post } = this.props;
 
@@ -12,47 +34,40 @@ export default class PostDetail extends React.Component {
       getPost(id);
     }
   }
+
+  removePost = () => {
+    const { post, removePost } = this.props;
+
+    removePost(post.get('id'));
+    this.props.router.push('/');
+  };
+
   render() {
     const { post, comments, user, getUserPosts } = this.props;
-    const commentsList = comments.map(comment => (
-      <div key={comment.get('id')}>name {comment.get('name')} body {comment.get('body')}</div>
+    const commentsList = comments.valueSeq().map(comment => (
+      <CommentDetail key={comment.get('id')} comment={comment} />
     ));
 
     return (
-      <Grid>
+      <Grid className="post-detail">
         <PostHeader
           post={post}
           user={user}
           commentsCount={comments.size}
           getUserPosts={getUserPosts}
+          remove={this.removePost}
         />
 
-        <div>
+        <Cell col={12}>
           {post.get('body')}
-        </div>
-        <div>
-          {post.get('userId')}
-        </div>
-        {user.get('name')}
-        <h1> Comments</h1>
-        {commentsList}
+        </Cell>
+        <Cell col={12}>
+          <h2> Comments</h2>
+          {commentsList}
+        </Cell>
       </Grid>
     );
   }
 }
 
-PostDetail.propTypes = {
-  post: ImmutablePropTypes.map.isRequired,
-  user: ImmutablePropTypes.map.isRequired,
-  comments: ImmutablePropTypes.list.isRequired,
-  getPost: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  getUserPosts: PropTypes.func.isRequired,
-};
-
-PostDetail.defaultProps = {
-  post: new Map(),
-  comments: new List(),
-  user: new Map(),
-};
-
+export default withRouter(PostDetail);

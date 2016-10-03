@@ -2,22 +2,21 @@ import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Cell } from 'react-mdl';
 import './listItem.css';
-import PostHeader from './../post/PostHeader';
+import PostHeader from '../../post/PostHeader';
 
 export default class ListItem extends React.Component {
   static propTypes = {
     post: ImmutablePropTypes.map,
     user: ImmutablePropTypes.map,
     removePost: React.PropTypes.func.isRequired,
-    postIndex: React.PropTypes.number.isRequired,
     commentsCount: React.PropTypes.number.isRequired,
     getUserPosts: React.PropTypes.func.isRequired,
   };
 
   removePost = () => {
-    const { postIndex, removePost } = this.props;
+    const { post, removePost } = this.props;
 
-    removePost(postIndex);
+    removePost(post.get('id'));
   };
 
   render() {

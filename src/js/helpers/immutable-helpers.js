@@ -1,12 +1,20 @@
-export const findEntityById = (posts, postId) => posts.filter(item => item.get('id') === parseInt(postId, 10)).first();
+export const arrayToObject = arr =>
+  arr.reduce((previous, current) => {
+    const prev = previous;
+
+    prev[current.id] = current;
+    return prev;
+  }, {});
+
+export const stringify = number => JSON.stringify(number);
 
 export const getComments = (comments, postId) => comments.filter(item => item.get('postId') === parseInt(postId, 10));
 
 export const getUser = (data, postId) => {
-  const post = findEntityById(data.get('posts'), postId);
+  const post = data.getIn(['posts', postId]);
 
   if (post) {
-    return findEntityById(data.get('users'), post.get('userId'));
+    return data.getIn(['users', stringify(post.get('userId'))]);
   }
 
   return undefined;
@@ -27,6 +35,3 @@ export const searchByFilters = (posts, filters) => {
 
   return filteredPosts.filter(item => (replaceNewLines(item.get('body')).search(regex) > -1 || replaceNewLines(item.get('title')).search(regex) > -1));
 };
-
-export const getUserPosts = (posts, userId) => posts.filter(item => item.get('userId') === parseInt(userId, 10));
-

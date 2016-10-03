@@ -1,7 +1,7 @@
 import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Link, withRouter } from 'react-router';
-import { Icon, Button } from 'react-mdl';
+import { Icon, Button, Tooltip } from 'react-mdl';
 import { Map } from 'immutable';
 import './postHeader.css';
 
@@ -30,17 +30,23 @@ class PostHeader extends React.Component {
           >
             {user.get('name')}
           </Button>
-          <Icon
-            name="comment"
-            className={'comment-icon'}
-            title={`${commentsCount}`}
-          />
-          <Icon
-            name="delete"
-            onClick={remove}
-            className="remove-post"
-            title="Remove"
-          />
+          <Tooltip
+            label={`This post has ${commentsCount} comment${commentsCount > 0 && 's'}`}
+            className="comment-tooltip"
+          >
+            <Icon
+              name="comment"
+              className={'comment-icon'}
+            />
+          </Tooltip>
+          <Tooltip label="Remove this post!">
+            <Icon
+              name="delete"
+              onClick={remove}
+              className="remove-post"
+              title="Remove"
+            />
+          </Tooltip>
         </div>
       </header>
     );
